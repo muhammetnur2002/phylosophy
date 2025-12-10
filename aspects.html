@@ -1,1524 +1,179 @@
-/* Общие стили */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-:root {
-    --beige: #f5f1e8;
-    --light-beige: #faf8f3;
-    --dark-beige: #e6d2a4;
-    --brown: #8b7355;
-    --dark-brown: #6b5a42;
-    --light-brown: #a9926c;
-    --green: #3a5a40;
-    --light-green: #4a7c59;
-    --dark-green: #2d4739;
-    --accent-green: #588157;
-    --text-dark: #333333;
-    --text-light: #f5f1e8;
-}
-
-body {
-    color: var(--text-dark);
-    overflow-x: hidden;
-    min-height: 100vh;
-    position: relative;
-}
-
-/* Видео фон */
-.video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    overflow: hidden;
-}
-
-.video-bg video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    filter: brightness(0.7);
-}
-
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, 
-        rgba(139, 115, 85, 0.3) 0%, 
-        rgba(58, 90, 64, 0.4) 50%, 
-        rgba(45, 71, 57, 0.5) 100%);
-}
-
-.video-fallback {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--beige) 0%, var(--light-beige) 50%, #e8f5e9 100%);
-}
-
-/* Навигация */
-.main-nav {
-    background-color: rgba(245, 241, 232, 0.85);
-    box-shadow: 0 2px 15px rgba(139, 115, 85, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dark-brown);
-}
-
-.logo i {
-    color: var(--green);
-    animation: leaf-glow 2s infinite alternate;
-}
-
-@keyframes leaf-glow {
-    from { filter: drop-shadow(0 0 5px rgba(58, 90, 64, 0.5)); }
-    to { filter: drop-shadow(0 0 15px rgba(88, 129, 87, 0.7)); }
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--dark-brown);
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.nav-links a:hover {
-    color: var(--green);
-    background-color: rgba(139, 115, 85, 0.1);
-}
-
-.nav-links a.active {
-    color: var(--green);
-}
-
-.nav-links a.active::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    height: 2px;
-    background-color: var(--green);
-    animation: underline-grow 0.3s ease;
-}
-
-@keyframes underline-grow {
-    from { width: 0; }
-    to { width: 50%; }
-}
-
-.nav-toggle {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--dark-brown);
-}
-
-/* Главный экран */
-main {
-    position: relative;
-    z-index: 1;
-}
-
-.hero {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    min-height: 80vh;
-    background-color: rgba(245, 241, 232, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.2);
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    color: var(--dark-green);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    animation: fadeInUp 1s ease;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.hero-content h2 {
-    font-size: 1.8rem;
-    color: var(--brown);
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-    animation: fadeInUp 1s ease 0.2s both;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
-    color: var(--text-dark);
-    animation: fadeInUp 1s ease 0.4s both;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background-color: var(--green);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(58, 90, 64, 0.3);
-    animation: fadeInUp 1s ease 0.6s both;
-    border: 2px solid transparent;
-}
-
-.btn:hover {
-    background-color: transparent;
-    color: var(--green);
-    border-color: var(--green);
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(58, 90, 64, 0.4);
-}
-
-.hero-image {
-    position: relative;
-    height: 500px;
-}
-
-.statue-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.statue {
-    position: absolute;
-    background-color: rgba(232, 225, 209, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.3);
-}
-
-.statue-1 {
-    width: 180px;
-    height: 350px;
-    top: 50px;
-    left: 50px;
-    background: linear-gradient(135deg, rgba(232, 225, 209, 0.9) 0%, rgba(212, 204, 184, 0.9) 100%);
-    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
-    animation: float-statue-1 8s ease-in-out infinite;
-}
-
-.statue-2 {
-    width: 150px;
-    height: 300px;
-    bottom: 50px;
-    right: 50px;
-    background: linear-gradient(135deg, rgba(212, 204, 184, 0.9) 0%, rgba(232, 225, 209, 0.9) 100%);
-    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
-    animation: float-statue-2 10s ease-in-out infinite;
-}
-
-.vines {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath fill='%233a5a40' fill-opacity='0.3' d='M42.3,-53.2C55.7,-42.6,68.4,-31.3,72.1,-17.8C75.8,-4.3,70.5,11.4,63.8,26.3C57.1,41.2,49,55.3,37.1,64.8C25.2,74.3,9.4,79.2,-3.6,78.4C-16.6,77.6,-33.2,71.2,-45.4,60.6C-57.5,50,-65.2,35.3,-69.2,19.7C-73.3,4.1,-73.7,-12.4,-68.4,-26.3C-63.1,-40.2,-52.1,-51.5,-39.4,-62.4C-26.7,-73.2,-12.4,-83.6,0.6,-84.5C13.6,-85.3,27.2,-76.6,42.3,-53.2Z' transform='translate(100 100)'/%3E%3C/svg%3E");
-    background-size: cover;
-    background-repeat: no-repeat;
-    animation: vine-grow 20s linear infinite;
-    opacity: 0.7;
-}
-
-.nature-elements {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.leaf {
-    position: absolute;
-    background-color: var(--light-green);
-    border-radius: 50% 0 50% 0;
-    opacity: 0.7;
-}
-
-.leaf-1 {
-    width: 40px;
-    height: 40px;
-    top: 30%;
-    left: 20%;
-    animation: leaf-float-1 15s infinite linear;
-}
-
-.leaf-2 {
-    width: 30px;
-    height: 30px;
-    top: 60%;
-    left: 70%;
-    animation: leaf-float-2 12s infinite linear;
-}
-
-.leaf-3 {
-    width: 25px;
-    height: 25px;
-    top: 80%;
-    left: 40%;
-    animation: leaf-float-3 18s infinite linear;
-}
-
-@keyframes leaf-float-1 {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(180deg); }
-}
-
-@keyframes leaf-float-2 {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    50% { transform: translateX(-20px) rotate(120deg); }
-}
-
-@keyframes leaf-float-3 {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(15px, -20px) rotate(90deg); }
-    66% { transform: translate(-10px, 10px) rotate(180deg); }
-}
-
-@keyframes float-statue-1 {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(1deg); }
-}
-
-@keyframes float-statue-2 {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(15px) rotate(-1deg); }
-}
-
-@keyframes vine-grow {
-    0% { background-position: 0 0; opacity: 0.5; }
-    50% { opacity: 0.8; }
-    100% { background-position: 200px 200px; opacity: 0.5; }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Обзор аспектов */
-.overview {
-    max-width: 1200px;
-    margin: 6rem auto;
-    padding: 2rem;
-    background-color: rgba(245, 241, 232, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.2);
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.section-title h2 {
-    font-size: 2.5rem;
-    color: var(--dark-green);
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.title-line {
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(to right, var(--brown), var(--green));
-    margin: 0 auto;
-    border-radius: 2px;
-    animation: line-grow 1s ease;
-}
-
-@keyframes line-grow {
-    from { width: 0; }
-    to { width: 100px; }
-}
-
-.aspects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.aspect-card {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
-    transition: all 0.3s ease;
-    text-align: center;
-    border-top: 5px solid var(--green);
-    animation: fadeInUp 0.8s ease;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.1);
-}
-
-.aspect-card:nth-child(2) {
-    border-top-color: var(--brown);
-    animation-delay: 0.1s;
-}
-
-.aspect-card:nth-child(3) {
-    border-top-color: var(--light-green);
-    animation-delay: 0.2s;
-}
-
-.aspect-card:nth-child(4) {
-    border-top-color: var(--dark-brown);
-    animation-delay: 0.3s;
-}
-
-.aspect-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 15px 40px rgba(139, 115, 85, 0.2);
-    background-color: white;
-}
-
-.aspect-icon {
-    width: 80px;
-    height: 80px;
-    background-color: rgba(58, 90, 64, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-size: 2rem;
-    color: var(--green);
-    transition: all 0.3s ease;
-}
-
-.aspect-card:hover .aspect-icon {
-    transform: scale(1.1);
-    background-color: rgba(58, 90, 64, 0.2);
-}
-
-.aspect-card h3 {
-    font-size: 1.5rem;
-    color: var(--dark-brown);
-    margin-bottom: 1rem;
-}
-
-.aspect-card p {
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-
-/* Таймер угроз */
-.threat-timer {
-    max-width: 1200px;
-    margin: 6rem auto;
-    padding: 3rem 2rem;
-    background-color: rgba(58, 90, 64, 0.9);
-    border-radius: 20px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    animation: pulse-border 3s infinite;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-@keyframes pulse-border {
-    0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
-    50% { box-shadow: 0 10px 40px rgba(58, 90, 64, 0.6); }
-}
-
-.threat-timer h3 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.threat-timer h3 i {
-    color: var(--beige);
-    animation: pulse-icon 2s infinite;
-}
-
-@keyframes pulse-icon {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-.timer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.timer-item {
-    padding: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    transition: all 0.3s ease;
-}
-
-.timer-item:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-5px);
-}
-
-.timer-number {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--beige);
-    animation: count-up 2s ease-out;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes count-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.timer-label {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
-
-.timer-note {
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    opacity: 0.8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-/* Страница аспектов */
-.aspects-page .page-header {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 3rem 2rem;
-    text-align: center;
-    background-color: rgba(245, 241, 232, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.2);
-}
-
-.aspects-page .page-header h1 {
-    font-size: 3rem;
-    color: var(--dark-green);
-    margin-bottom: 1rem;
-    animation: fadeInUp 1s ease;
-}
-
-.aspects-page .page-header p {
-    font-size: 1.5rem;
-    color: var(--brown);
-    animation: fadeInUp 1s ease 0.2s both;
-}
-
-.aspects-detailed {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-}
-
-.aspect-detail-card {
-    background-color: rgba(245, 241, 232, 0.85);
-    border-radius: 20px;
-    padding: 2.5rem;
-    margin-bottom: 3rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.2);
-    animation: fadeInUp 0.8s ease;
-    transition: all 0.3s ease;
-}
-
-.aspect-detail-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-}
-
-.aspect-header {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.aspect-icon-large {
-    width: 80px;
-    height: 80px;
-    background-color: rgba(58, 90, 64, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    color: var(--green);
-    transition: all 0.3s ease;
-}
-
-.aspect-detail-card:hover .aspect-icon-large {
-    transform: rotate(15deg) scale(1.1);
-    background-color: rgba(58, 90, 64, 0.25);
-}
-
-.aspect-header h2 {
-    font-size: 2.2rem;
-    color: var(--dark-green);
-}
-
-.aspect-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.aspect-content.reverse {
-    direction: rtl;
-}
-
-.aspect-content.reverse .aspect-text {
-    direction: ltr;
-}
-
-.aspect-image {
-    height: 300px;
-    border-radius: 15px;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    animation: float-statue-1 8s ease-in-out infinite;
-    border: 2px solid rgba(139, 115, 85, 0.3);
-}
-
-/* Стили для картин с рамками */
-.painting-frame {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: var(--dark-beige);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 
-        inset 0 0 20px rgba(139, 115, 85, 0.3),
-        0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.painting {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease;
-}
-
-.painting:hover {
-    transform: scale(1.02);
-}
-
-.painting-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(45, 71, 57, 0.9), transparent);
-    color: white;
-    padding: 20px 15px 10px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-}
-
-.painting:hover .painting-overlay {
-    transform: translateY(0);
-}
-
-.painting-overlay h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.painting-caption {
-    text-align: center;
-    margin-top: 10px;
-    font-style: italic;
-    color: var(--dark-brown);
-    font-size: 0.9rem;
-}
-.aspect-text p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    color: var(--text-dark);
-}
-
-.aspect-text ul {
-    list-style-position: inside;
-    margin-bottom: 1.5rem;
-}
-
-.aspect-text li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.aspect-text li::before {
-    content: "🌿";
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-/* Диаграмма связей */
-.aspects-connection {
-    max-width: 1200px;
-    margin: 6rem auto;
-    padding: 3rem 2rem;
-    text-align: center;
-    background-color: rgba(245, 241, 232, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.2);
-}
-
-.aspects-connection h2 {
-    font-size: 2.5rem;
-    color: var(--dark-green);
-    margin-bottom: 3rem;
-}
-
-.connection-diagram {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-    gap: 1rem;
-}
-
-.connection-node {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-align: center;
-    padding: 1rem;
-    position: relative;
-    animation: pulse-node 4s infinite;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.science-node {
-    background-color: rgba(58, 90, 64, 0.9);
-    animation-delay: 0s;
-}
-
-.philosophy-node {
-    background-color: rgba(139, 115, 85, 0.9);
-    animation-delay: 0.5s;
-}
-
-.religion-node {
-    background-color: rgba(74, 124, 89, 0.9);
-    animation-delay: 1s;
-}
-
-.politics-node {
-    background-color: rgba(107, 90, 66, 0.9);
-    animation-delay: 1.5s;
-}
-
-@keyframes pulse-node {
-    0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
-    50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); }
-}
-
-.connection-line {
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(to right, var(--brown), var(--green));
-    position: relative;
-}
-
-.connection-line::after {
-    content: "→";
-    position: absolute;
-    right: -15px;
-    top: -12px;
-    color: var(--brown);
-    font-size: 1.5rem;
-    animation: arrow-move 2s infinite;
-}
-
-@keyframes arrow-move {
-    0%, 100% { right: -15px; }
-    50% { right: -20px; }
-}
-
-.connection-text {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.2rem;
-    line-height: 1.7;
-    color: var(--text-dark);
-}
-
-/* Страница решений */
-.solutions-page .page-header {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 3rem 2rem;
-    text-align: center;
-    background-color: rgba(245, 241, 232, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.2);
-}
-
-.solutions-page .page-header h1 {
-    font-size: 3rem;
-    color: var(--dark-green);
-    margin-bottom: 1rem;
-    animation: fadeInUp 1s ease;
-}
-
-.solutions-page .page-header p {
-    font-size: 1.5rem;
-    color: var(--brown);
-    animation: fadeInUp 1s ease 0.2s both;
-}
-
-.solutions-aspects {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-}
-
-.solutions-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.solution-card {
-    background-color: rgba(245, 241, 232, 0.85);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
-    transition: all 0.3s ease;
-    animation: fadeInUp 0.8s ease;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.2);
-}
-
-.solution-card:nth-child(2) {
-    animation-delay: 0.1s;
-}
-
-.solution-card:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.solution-card:nth-child(4) {
-    animation-delay: 0.3s;
-}
-
-.solution-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(139, 115, 85, 0.2);
-    background-color: rgba(245, 241, 232, 0.95);
-}
-
-.solution-header {
-    background-color: rgba(58, 90, 64, 0.9);
-    color: white;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
-}
-
-.solution-icon {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-}
-
-.solution-card:hover .solution-icon {
-    transform: rotate(15deg) scale(1.1);
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.solution-header h3 {
-    font-size: 1.3rem;
-}
-
-.solution-content {
-    padding: 1.5rem;
-}
-
-.solution-content ul {
-    list-style-position: inside;
-    margin-bottom: 1.5rem;
-}
-
-.solution-content li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.solution-content li::before {
-    content: "✓";
-    color: var(--green);
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-}
-
-.solution-example {
-    background-color: rgba(139, 115, 85, 0.1);
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--brown);
-    transition: all 0.3s ease;
-}
-
-.solution-card:hover .solution-example {
-    background-color: rgba(139, 115, 85, 0.15);
-}
-
-.solution-example h4 {
-    color: var(--dark-brown);
-    margin-bottom: 0.5rem;
-}
-
-.solution-example p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* План действий */
-.action-plan {
-    max-width: 1200px;
-    margin: 6rem auto;
-    padding: 2rem;
-    background-color: rgba(245, 241, 232, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(139, 115, 85, 0.2);
-}
-
-.plan-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-}
-
-.plan-step {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-    animation: fadeInUp 0.8s ease;
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 1.5rem;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-}
-
-.plan-step:nth-child(2) {
-    animation-delay: 0.1s;
-}
-
-.plan-step:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.plan-step:nth-child(4) {
-    animation-delay: 0.3s;
-}
-
-.plan-step:hover {
-    transform: translateY(-5px);
-    background-color: white;
-    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
-}
-
-.step-number {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--green), var(--light-green));
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    flex-shrink: 0;
-    box-shadow: 0 5px 15px rgba(58, 90, 64, 0.3);
-}
-
-.step-content h3 {
-    font-size: 1.4rem;
-    color: var(--dark-green);
-    margin-bottom: 0.5rem;
-}
-
-.step-content p {
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-
-.personal-pledge {
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 15px;
-    padding: 3rem;
-    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
-    text-align: center;
-    animation: fadeInUp 1s ease;
-    border: 1px solid rgba(139, 115, 85, 0.1);
-}
-
-.personal-pledge:hover {
-    background-color: white;
-}
-
-.personal-pledge h3 {
-    font-size: 1.8rem;
-    color: var(--dark-green);
-    margin-bottom: 2rem;
-}
-
-.pledge-container {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-#pledge-text {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: var(--brown);
-    font-style: italic;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: rgba(139, 115, 85, 0.05);
-    border-radius: 10px;
-    animation: text-pulse 3s infinite;
-    border-left: 4px solid var(--green);
-    border-right: 4px solid var(--green);
-}
-
-@keyframes text-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.9; }
-}
-
-.pledge-btn {
-    background: linear-gradient(135deg, var(--green), var(--light-green));
-    color: white;
-    border: none;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    box-shadow: 0 4px 15px rgba(58, 90, 64, 0.3);
-}
-
-.pledge-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(58, 90, 64, 0.4);
-}
-
-.pledge-confirmation {
-    margin-top: 2rem;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-size: 1.3rem;
-    color: var(--green);
-    animation: fadeInUp 0.5s ease;
-    background-color: rgba(88, 129, 87, 0.1);
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-.pledge-confirmation i {
-    font-size: 2rem;
-    animation: check-spin 1s ease;
-}
-
-@keyframes check-spin {
-    0% { transform: scale(0) rotate(0deg); }
-    50% { transform: scale(1.2) rotate(180deg); }
-    100% { transform: scale(1) rotate(360deg); }
-}
-
-.pledge-confirmation.show {
-    display: flex;
-}
-
-/* Видение будущего */
-.future-vision {
-    max-width: 1200px;
-    margin: 6rem auto;
-    padding: 4rem 2rem;
-    background-color: rgba(58, 90, 64, 0.85);
-    border-radius: 20px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    animation: fadeInUp 1s ease;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.future-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--beige);
-}
-
-.future-content > p {
-    font-size: 1.2rem;
-    line-height: 1.7;
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    opacity: 0.9;
-}
-
-.future-features {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.future-feature {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    width: 150px;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    transition: all 0.3s ease;
-}
-
-.future-feature:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-5px);
-}
-
-.future-feature i {
-    font-size: 2.5rem;
-    color: var(--beige);
-    margin-bottom: 0.5rem;
-    animation: icon-float 3s infinite ease-in-out;
-}
-
-@keyframes icon-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.future-feature span {
-    font-size: 1rem;
-    line-height: 1.4;
-}
-
-.future-quote {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.quote-statue {
-    width: 80px;
-    height: 120px;
-    background-color: rgba(232, 225, 209, 0.8);
-    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
-    margin: 0 auto 1.5rem;
-    animation: float-statue-1 8s ease-in-out infinite;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.future-quote blockquote {
-    font-size: 1.5rem;
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--beige);
-    position: relative;
-}
-
-.future-quote blockquote::before,
-.future-quote blockquote::after {
-    content: '"';
-    font-size: 3rem;
-    color: rgba(245, 241, 232, 0.3);
-    position: absolute;
-}
-
-.future-quote blockquote::before {
-    top: -20px;
-    left: -10px;
-}
-
-.future-quote blockquote::after {
-    bottom: -40px;
-    right: -10px;
-}
-
-/* Футер */
-footer {
-    background-color: rgba(45, 71, 57, 0.9);
-    color: var(--beige);
-    margin-top: 6rem;
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(139, 115, 85, 0.3);
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-    text-align: center;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: var(--beige);
-}
-
-.footer-logo i {
-    color: var(--light-green);
-    animation: leaf-glow 2s infinite alternate;
-}
-
-.footer-content p {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    opacity: 0.8;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-
-.footer-links a {
-    color: var(--beige);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.footer-links a:hover {
-    background-color: rgba(245, 241, 232, 0.1);
-}
-
-.video-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.video-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--beige);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.video-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.footer-bottom {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 1.5rem;
-    text-align: center;
-    font-size: 0.9rem;
-    opacity: 0.7;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Адаптивность */
-@media (max-width: 992px) {
-    .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-        padding: 1.5rem;
-    }
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Человек и природа | Аспекты проблемы</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg"></div>
     
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-    
-    .aspect-content, .aspect-content.reverse {
-        grid-template-columns: 1fr;
-        direction: ltr;
-    }
-    
-    .connection-diagram {
-        flex-direction: column;
-    }
-    
-    .connection-line {
-        width: 4px;
-        height: 60px;
-    }
-    
-    .connection-line::after {
-        content: "↓";
-        right: -12px;
-        top: auto;
-        bottom: -15px;
-        animation: arrow-move-vertical 2s infinite;
-    }
-    
-    @keyframes arrow-move-vertical {
-        0%, 100% { bottom: -15px; }
-        50% { bottom: -20px; }
-    }
-    
-    .video-bg video {
-        filter: brightness(0.6);
-    }
-}
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>Человек и природа</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="aspects.html" class="active">Аспекты проблемы</a></li>
+                <li><a href="solutions.html">Решения</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(245, 241, 232, 0.95);
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        border-top: 1px solid rgba(139, 115, 85, 0.2);
-    }
-    
-    .nav-links.active {
-        display: flex;
-    }
-    
-    .nav-toggle {
-        display: block;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.3rem;
-    }
-    
-    .hero-content h2 {
-        font-size: 1.5rem;
-    }
-    
-    .section-title h2 {
-        font-size: 2rem;
-    }
-    
-    .aspect-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    
-    .aspect-header h2 {
-        font-size: 1.8rem;
-    }
-    
-    .timer-number {
-        font-size: 2.8rem;
-    }
-    
-    .future-features {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .video-controls {
-        flex-direction: column;
-        align-items: center;
-    }
-}
+    <!-- Основной контент -->
+    <main class="aspects-page">
+        <section class="page-header">
+            <h1 class="animate-title">Аспекты экологической проблемы</h1>
+            <p class="animate-subtitle">Четыре перспективы анализа взаимодействия человека с окружающей средой</p>
+        </section>
 
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-    
-    .aspect-card {
-        padding: 1.5rem;
-    }
-    
-    .aspect-detail-card {
-        padding: 1.5rem;
-    }
-    
-    .connection-node {
-        width: 150px;
-        height: 150px;
-        font-size: 1rem;
-    }
-    
-    .personal-pledge {
-        padding: 2rem 1.5rem;
-    }
-    
-    #pledge-text {
-        font-size: 1.2rem;
-    }
-    
-    .hero-image {
-        height: 350px;
-    }
-    
-    .statue-1 {
-        width: 120px;
-        height: 250px;
-        left: 30px;
-    }
-    
-    .statue-2 {
-        width: 100px;
-        height: 200px;
-        right: 30px;
-    }
-}
+        <!-- Аспекты детально -->
+        <section class="aspects-detailed">
+            <!-- Естественнонаучный аспект -->
+            <div class="aspect-detail-card">
+                <div class="aspect-header">
+                    <div class="aspect-icon-large">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h2>Естественнонаучный аспект</h2>
+                </div>
+                <div class="aspect-content">
+                    <div class="aspect-text">
+                        <p>Научный подход к экологическим проблемам основан на изучении физических, химических и биологических процессов в природе. Ученые анализируют:</p>
+                        <ul>
+                            <li>Изменение климата и глобальное потепление</li>
+                            <li>Потерю биоразнообразия и вымирание видов</li>
+                            <li>Загрязнение воздуха, воды и почвы</li>
+                            <li>Истощение природных ресурсов</li>
+                            <li>Нарушение экосистем и естественных циклов</li>
+                        </ul>
+                        <p>Эти исследования позволяют оценить масштабы проблем и разработать научно обоснованные решения.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Философский аспект -->
+            <div class="aspect-detail-card">
+                <div class="aspect-header">
+                    <div class="aspect-icon-large">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h2>Философский аспект</h2>
+                </div>
+                <div class="aspect-content reverse">
+                    <div class="aspect-text">
+                        <p>Философское осмысление экологических проблем затрагивает фундаментальные вопросы о месте человека в природе и его ответственности перед будущими поколениями.</p>
+                        <ul>
+                            <li>Антропоцентризм vs биоцентризм</li>
+                            <li>Этика отношения к животным и растениям</li>
+                            <li>Концепция устойчивого развития</li>
+                            <li>Философия глубокой экологии</li>
+                            <li>Экзистенциальные вопросы выживания человечества</li>
+                        </ul>
+                        <p>Философский подход помогает сформировать ценностное отношение к природе и определить этические принципы взаимодействия с окружающей средой.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Религиозный аспект -->
+            <div class="aspect-detail-card">
+                <div class="aspect-header">
+                    <div class="aspect-icon-large">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h2>Религиозный аспект</h2>
+                </div>
+                <div class="aspect-content">
+                    <div class="aspect-text">
+                        <p>Религиозные традиции предлагают различные взгляды на отношение человека к природе, формируя основу для экологической этики.</p>
+                        <ul>
+                            <li>Христианство: концепция stewardship (управления творением)</li>
+                            <li>Буддизм: принцип взаимосвязи всех живых существ</li>
+                            <li>Индуизм: почитание природы как проявления божественного</li>
+                            <li>Ислам: ответственность халифа (наместника) на Земле</li>
+                            <li>Языческие традиции: обожествление природных сил</li>
+                        </ul>
+                        <p>Религиозные ценности могут мотивировать людей к бережному отношению к окружающей среде как к священному дару.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Социально-политический аспект -->
+            <div class="aspect-detail-card">
+                <div class="aspect-header">
+                    <div class="aspect-icon-large">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2>Социально-политический аспект</h2>
+                </div>
+                <div class="aspect-content reverse">
+                    <div class="aspect-text">
+                        <p>Экологические проблемы тесно связаны с социальными структурами, политическими решениями и экономическими системами.</p>
+                        <ul>
+                            <li>Экологическая политика и международные соглашения</li>
+                            <li>Экономика устойчивого развития и "зеленый" рост</li>
+                            <li>Экологическое право и регулирование</li>
+                            <li>Общественные движения и экологический активизм</li>
+                            <li>Социальная справедливость и экологический расизм</li>
+                        </ul>
+                        <p>Политические решения и общественные инициативы определяют практические шаги по решению экологических проблем на глобальном и локальном уровнях.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Взаимосвязь аспектов -->
+        <section class="aspects-connection">
+            <h2>Взаимосвязь аспектов</h2>
+            <div class="connection-diagram">
+                <div class="connection-node science-node">
+                    <span>Естественнонаучный</span>
+                </div>
+                <div class="connection-line"></div>
+                <div class="connection-node philosophy-node">
+                    <span>Философский</span>
+                </div>
+                <div class="connection-line"></div>
+                <div class="connection-node religion-node">
+                    <span>Религиозный</span>
+                </div>
+                <div class="connection-line"></div>
+                <div class="connection-node politics-node">
+                    <span>Социально-политический</span>
+                </div>
+            </div>
+            <p class="connection-text">Все четыре аспекта взаимосвязаны и формируют целостное понимание экологической проблемы. Научные данные интерпретируются через философские и религиозные призмы, что в свою очередь влияет на политические решения и социальные практики.</p>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-leaf"></i>
+                <span>Человек и природа</span>
+            </div>
+            <p>Экологическая проблема как комплексный вызов современности</p>
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="aspects.html">Аспекты</a>
+                <a href="solutions.html">Решения</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Презентация на тему "Человек и природа"</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
