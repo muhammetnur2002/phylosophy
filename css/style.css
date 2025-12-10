@@ -663,30 +663,63 @@ main {
     border: 2px solid rgba(139, 115, 85, 0.3);
 }
 
-.science-img {
-    background-image: 
-        linear-gradient(rgba(139, 115, 85, 0.1), rgba(58, 90, 64, 0.2)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%23f5f1e8' width='400' height='300'/%3E%3Cpath fill='%238b7355' d='M50,150 Q200,50 350,150 T50,150' fill-opacity='0.2'/%3E%3Ccircle fill='%233a5a40' cx='200' cy='150' r='40' fill-opacity='0.3'/%3E%3C/g%3E%3C/svg%3E");
+/* Стили для картин с рамками */
+.painting-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-beige);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 
+        inset 0 0 20px rgba(139, 115, 85, 0.3),
+        0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.philosophy-img {
-    background-image: 
-        linear-gradient(rgba(139, 115, 85, 0.1), rgba(58, 90, 64, 0.2)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%23f5f1e8' width='400' height='300'/%3E%3Cpath fill='%233a5a40' d='M100,100 Q150,50 200,100 T300,100' fill-opacity='0.2'/%3E%3Cpath fill='%238b7355' d='M100,200 Q200,250 300,200' fill-opacity='0.2'/%3E%3C/g%3E%3C/svg%3E");
+.painting {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
 }
 
-.religion-img {
-    background-image: 
-        linear-gradient(rgba(139, 115, 85, 0.1), rgba(58, 90, 64, 0.2)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%23f5f1e8' width='400' height='300'/%3E%3Cpath fill='%233a5a40' d='M200,50 L250,150 L150,150 Z' fill-opacity='0.3'/%3E%3Ccircle fill='%238b7355' cx='200' cy='200' r='30' fill-opacity='0.3'/%3E%3C/g%3E%3C/svg%3E");
+.painting:hover {
+    transform: scale(1.02);
 }
 
-.politics-img {
-    background-image: 
-        linear-gradient(rgba(139, 115, 85, 0.1), rgba(58, 90, 64, 0.2)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%23f5f1e8' width='400' height='300'/%3E%3Crect fill='%233a5a40' x='100' y='100' width='200' height='100' fill-opacity='0.2'/%3E%3Ccircle fill='%238b7355' cx='200' cy='150' r='40' fill-opacity='0.2'/%3E%3C/g%3E%3C/svg%3E");
+.painting-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(45, 71, 57, 0.9), transparent);
+    color: white;
+    padding: 20px 15px 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
 }
 
+.painting:hover .painting-overlay {
+    transform: translateY(0);
+}
+
+.painting-overlay h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.painting-caption {
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--dark-brown);
+    font-size: 0.9rem;
+}
 .aspect-text p {
     font-size: 1.1rem;
     line-height: 1.7;
