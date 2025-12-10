@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Человек и природа | Главная</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Видео фон -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
+            <!-- Fallback изображение если видео не загрузится -->
+            <div class="video-fallback"></div>
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>Человек и природа</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="aspects.html">Аспекты проблемы</a></li>
+                <li><a href="solutions.html">Решения</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="animate-title">Человек и природа</h1>
+                <h2 class="animate-subtitle">Экологическая проблема: многогранный вызов</h2>
+                <p class="animate-text">Естественнонаучный, философский, религиозный и социально-политический аспекты взаимодействия человека с окружающей средой</p>
+                <a href="aspects.html" class="btn animate-btn">Исследовать аспекты <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-image">
+                <div class="statue-container">
+                    <div class="statue statue-1"></div>
+                    <div class="statue statue-2"></div>
+                    <div class="vines"></div>
+                    <div class="nature-elements">
+                        <div class="leaf leaf-1"></div>
+                        <div class="leaf leaf-2"></div>
+                        <div class="leaf leaf-3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Краткий обзор -->
+        <section class="overview">
+            <div class="section-title">
+                <h2>Четыре аспекта экологической проблемы</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="aspects-grid">
+                <div class="aspect-card">
+                    <div class="aspect-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Естественнонаучный</h3>
+                    <p>Изучение физических, химических и биологических процессов, влияющих на экосистемы Земли</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Философский</h3>
+                    <p>Осмысление места человека в природе, этические вопросы и ценность живого мира</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Религиозный</h3>
+                    <p>Отношение к природе как к творению, концепции stewardship и духовной ответственности</p>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Социально-политический</h3>
+                    <p>Политика, экономика, право и общественные движения, формирующие экологическую повестку</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Таймер экологических угроз -->
+        <section class="threat-timer">
+            <h3><i class="fas fa-clock"></i> Каждую минуту на планете:</h3>
+            <div class="timer-grid">
+                <div class="timer-item">
+                    <div class="timer-number" data-target="28">0</div>
+                    <div class="timer-label">гектаров леса исчезает</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" data-target="3000">0</div>
+                    <div class="timer-label">тонн льда тает</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" data-target="50">0</div>
+                    <div class="timer-label">видов вымирает</div>
+                </div>
+            </div>
+            <p class="timer-note"><i class="fas fa-exclamation-triangle"></i> Цифры основаны на статистике ООН по окружающей среде</p>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-leaf"></i>
+                <span>Человек и природа</span>
+            </div>
+            <p>Экологическая проблема как комплексный вызов современности</p>
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="aspects.html">Аспекты</a>
+                <a href="solutions.html">Решения</a>
+            </div>
+            <div class="video-controls">
+                <button id="video-toggle" class="video-btn">
+                    <i class="fas fa-pause"></i> Пауза видео
+                </button>
+                <button id="video-sound" class="video-btn">
+                    <i class="fas fa-volume-mute"></i> Звук
+                </button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Презентация на тему "Человек и природа" | Видео: Mixkit</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
